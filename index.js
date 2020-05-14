@@ -4,23 +4,23 @@ const mongoose=require('mongoose')
 const Post =require('./models/Post')
 var config = require('./global')
 const schema=require('./graphql/schema')
-
+const resolvers=require('./graphql/resolvers')
 const {MONGO}=config
 
 //const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
 
 
 // Provide resolver functions for your schema fields
-const resolvers = {
-  async getPosts(){
-    try{
-        const posts=await Post.find().sort({createdAt:-1});
-        return posts;
-    }catch(err){
-        throw new Error(err);
-    }
-  }
-};
+// const resolvers = {
+//   async getPosts(){
+//     try{
+//         const posts=await Post.find().sort({createdAt:-1});
+//         return posts;
+//     }catch(err){
+//         throw new Error(err);
+//     }
+//   }
+// };
 
 mongoose.connect(MONGO,{useNewUrlParser:true})
 .then(()=>{
