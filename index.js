@@ -1,79 +1,24 @@
-const { ApolloServer, gql } = require('apollo-server')
-const mongoose=require('mongoose')
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
 
-const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
+// Construct a schema, using GraphQL schema language
+const schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
 
-/* Construct a schema, using GraphQL schema language */
-const typeDefs = gql`
-  type Query { hello: String }
-`
-
-/* Provide resolver functions for your schema fields */
+// Provide resolver functions for your schema fields
 const resolvers = {
-  Query: {
-    hello: () => 'Hello from Apollo!!',
-  },
-}
+  hello: () => 'Hello world!'
+};
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ event, context }) => ({
-      headers: event.headers,
-      functionName: context.functionName,
-      event,
-      context,
-    }),
-  })
+const app = express();
+app.use('/graphql', graphqlHTTP({
+  schema,
+  rootValue: resolvers
+}));
+app.listen(4000);
 
-  mongoose.connect(MONGO,{useNewUrlParser:true})
-    .then(()=>{
-        console.log("mongodb connected!!!")
-        //return server.listen({port:8000})
-    }).then(res=>{
-        console.log(`server running at ${res}`)
-    })
-//server.listen({port:5000});
-
-// exports.handler = server.createHandler({
-//   cors: {
-//     origin: '*',
-//     credentials: true,
-//   },
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const {ApolloServer} =require('apollo-server');
-// const typeDefs=require('./graphql/typeDefs')
-// const resolvers=require('./graphql/resolvers')
-// const mongoose=require('mongoose')
-
-// const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
-
-
-
-
-// const server=new ApolloServer({
-//     typeDefs,
-//     resolvers,
-//     context:({req})=>({req})
-// });
-
+console.log(`Server ready at http://localhost:4000/graphql`);
