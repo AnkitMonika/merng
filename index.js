@@ -31,7 +31,7 @@ const server = new ApolloServer({
         console.log("mongodb connected!!!")
         //return server.listen({port:8000})
     }).then(res=>{
-        console.log(`server running at ${res.url}`)
+        console.log(`server running at ${res}`)
     })
 //server.listen({port:5000});
 
