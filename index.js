@@ -3,8 +3,9 @@ const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose=require('mongoose')
 const Post =require('./models/Post')
-const {MONGO} = require('./config')
+var config = require('./config')
 
+const {MONGO}=config
 
 //const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
 
