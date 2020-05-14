@@ -1,6 +1,8 @@
 const { ApolloServer, gql } = require('apollo-server')
 const mongoose=require('mongoose')
 
+const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
+
 /* Construct a schema, using GraphQL schema language */
 const typeDefs = gql`
   type Query { hello: String }
