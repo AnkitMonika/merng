@@ -1,5 +1,5 @@
 const express = require('express');
-const {ApolloServer} =require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server')
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
