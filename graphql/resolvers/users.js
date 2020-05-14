@@ -4,7 +4,7 @@ const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken')
 const {UserInputError}=require('apollo-server')
 
-//const {SECRET_KEY}=require('../../config')
+
 const SECRET_KEY='some very secret'
 function generateToken(user){
     return jwt.sign({
