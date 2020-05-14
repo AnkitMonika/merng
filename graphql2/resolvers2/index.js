@@ -1,5 +1,5 @@
-const postsResolvers=require('./posts.js');
-const userResolvers=require('./users.js');
+var resolvers=require('./');
+//var userResolvers=require('./users.js');
 
 
 module.exports={
@@ -8,10 +8,10 @@ module.exports={
         commentCount:(parent)=>parent.comments.length        
     },
     Query:{
-        ...postsResolvers.Query
+        ...resolvers.postsResolvers.Query
     },
     Mutation:{
-        ...userResolvers.Mutation,
-        ...postsResolvers.Mutation
+        ...resolvers.userResolvers.Mutation,
+        ...resolvers.postsResolvers.Mutation
     }
 }
