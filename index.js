@@ -4,7 +4,7 @@ const mongoose=require('mongoose')
 const Post =require('./models/Post')
 var config = require('./global')
 const schema=require('./graphql/schema')
-const resolvers=require('./graphql/resolvers')
+const resolvers=require('./graphql/resolvers2')
 const {MONGO}=config
 
 //const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';

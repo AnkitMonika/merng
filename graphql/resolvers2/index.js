@@ -1,4 +1,4 @@
-const postsResolvers=require('../../graphql/resolvers/posts');
+const postsResolvers=require('./posts.js');
 const userResolvers=require('./users.js');
 
 
