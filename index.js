@@ -26,20 +26,22 @@ const server = new ApolloServer({
     }),
   })
 
-// exports.handler = server.createHandler({
-//   cors: {
-//     origin: '*',
-//     credentials: true,
-//   },
-// })
-
-mongoose.connect(MONGO,{useNewUrlParser:true})
+  mongoose.connect(MONGO,{useNewUrlParser:true})
     .then(()=>{
         console.log("mongodb connected!!!")
-        return server.listen({port:8000})
+        //return server.listen({port:8000})
     }).then(res=>{
         console.log(`server running at ${res.url}`)
     })
+
+
+exports.handler = server.createHandler({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+})
+
 
 
 
