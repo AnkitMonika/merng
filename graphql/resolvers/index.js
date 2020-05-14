@@ -1,5 +1,5 @@
-const postsResolvers=require('./posts');
-const userResolvers=require('./users');
+const postsResolvers=require('./posts.js');
+const userResolvers=require('./users.js');
 
 
 module.exports={
