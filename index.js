@@ -3,7 +3,7 @@ const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose=require('mongoose')
 const Post =require('./models/Post')
-var config = require('./config')
+var config = require('./global')
 
 const {MONGO}=config
 
