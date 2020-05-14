@@ -33,7 +33,7 @@ const server = new ApolloServer({
     }).then(res=>{
         console.log(`server running at ${res.url}`)
     })
-server.listen({port:5000});
+//server.listen({port:5000});
 
 // exports.handler = server.createHandler({
 //   cors: {
