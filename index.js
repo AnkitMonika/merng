@@ -36,7 +36,7 @@ const server = new ApolloServer({
 mongoose.connect(MONGO,{useNewUrlParser:true})
     .then(()=>{
         console.log("mongodb connected!!!")
-        return server.listen({port:5000})
+        return server.listen({port:8000})
     }).then(res=>{
         console.log(`server running at ${res.url}`)
     })
