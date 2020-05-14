@@ -1,6 +1,6 @@
-var resolvers=require('./');
+var resolvers=require('./posts.js');
 //var userResolvers=require('./users.js');
-const {posts, users}=resolvers
+const {posts}=resolvers
 
 module.exports={
     Post:{
