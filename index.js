@@ -3,8 +3,8 @@ const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose=require('mongoose')
 const Post =require('./models/Post')
-
-const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
+const {MONGO} = require('./config')
+//const MONGO='mongodb+srv://Ankit:zYZOl7WEfY5imvw2@cluster0-xthjj.mongodb.net/merng?retryWrites=true&w=majority';
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
       type Post{
