@@ -252,7 +252,8 @@ mongoose.connect(MONGO,{useNewUrlParser:true})
 const app = express();
 app.use('/graphql', graphqlHTTP({
   schema,
-  rootValue: resolvers
+  rootValue: resolvers,
+  graphiql: true
 }));
 app.listen(4000);
 
