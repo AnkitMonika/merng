@@ -7,7 +7,6 @@
     "serve": "node index",
     "start": "node index.js"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,6 +17,7 @@
     "express-graphql": "^0.9.0",
     "graphql": "^15.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.7",
     "mongoose": "^5.9.13"
   },
   "devDependencies": {
