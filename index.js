@@ -1,22 +1,22 @@
 const Express = require("express");
-const ExpressGraphQL = require("express-graphql");
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser')
 const { MONGO } = require('./global')
 const graphqlHTTP = require('express-graphql');
-const {schema}=require('./graphql/schema')
+const { schema } = require('./graphql/schema')
+const cors = require('cors')
 
-var cors=require('cors')
 var app = Express();
 
-mongoose.connect(MONGO,{useNewUrlParser:true,useUnifiedTopology:true}).
-then(()=>{
-    console.log("monodb connected")
-},err=>{Console.log(err)});
+mongoose.connect(MONGO, { useNewUrlParser: true, useUnifiedTopology: true }).
+    then(() => {
+        console.log("monodb connected")
+    }, err => { Console.log(err) });
 
 
-app.options('*', cors());
-
- app.use("/graphql",cors(),graphqlHTTP({
+//app.options('*', cors());
+app.use(cors())
+app.use("/graphql", bodyParser.json(), graphqlHTTP({
     schema: schema,
     graphiql: true
 }));
