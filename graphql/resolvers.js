@@ -23,7 +23,7 @@ module.exports = {
     Query: {
         async getPosts() {
             try {
-                const posts = Post.find();
+                const posts = Post.find().sort({createdAt:-1})
                 return posts;
             } catch (err) {
                 throw new Error(err);
@@ -47,6 +47,13 @@ module.exports = {
     Mutation: {
         async createPost({ body }, context) {
             const user = checkAuth(context);
+            if (body.trim() === '') {
+                throw new UserInputError('Empty body', {
+                    errors: {
+                        body: 'body body must not empty'
+                    }
+                });
+            }
             const newPost = new Post({
                 body,
                 user: user.id,
@@ -74,6 +81,7 @@ module.exports = {
             }
         },
         async createComment({ postId, body }, context){
+            console.log(postId)
             const { username } = checkAuth(context)
             if (body.trim() === '') {
                 throw new UserInputError('Empty comment', {
@@ -87,7 +95,7 @@ module.exports = {
                 post.comments.unshift({
                     body,
                     username,
-                    createAt: new Date().toISOString()
+                    createdAt: new Date().toISOString()
                 });
                 post.save();
             }
@@ -97,9 +105,12 @@ module.exports = {
         },
         async deleteComment({ postId, commentId }, context) {
             const { username } = checkAuth(context);
-
-            const post = Post.findById(postId);
+            console.log(postId)
+            const post = await Post.findById(postId);
+            console.log("Post iD", post.id)
             if (post) {
+                console.log(post.likes)
+                console.log(post.comments)
                 const commentIndex = post.comments.findIndex(c => c.id === commentId);
                 if (post.comments[commentIndex].username = username) {
                     post.comments.splice(commentIndex, 1);

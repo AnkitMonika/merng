@@ -135,12 +135,13 @@ module.exports.schema=new GraphQLSchema({
             creatComment: {
                 type: PostType,
                 args: {
-                        postId: {type: GraphQLNonNull(GraphQLID),
-                        body: { type: GraphQLNonNull(GraphQLString) }
-                    }
-                },
+                        postId: { type: GraphQLNonNull(GraphQLString)},
+                        body: { type: GraphQLNonNull(GraphQLString)}
+                    },
+                
                 resolve: (root, args, context, info) => {
                     return resolver.Mutation.createComment(args,context)
+                    
                     //post.commentCount=resolver.Post.commentCount(post)
                     //return post;
                 }
@@ -173,4 +174,5 @@ module.exports.schema=new GraphQLSchema({
     })
 
 });
+
 
